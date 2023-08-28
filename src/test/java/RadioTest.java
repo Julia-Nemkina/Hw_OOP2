@@ -15,6 +15,40 @@ public class RadioTest {
     }
 
     @Test
+    public void flexibleCurrentStationBelowTheBorder() {
+        Radio radio = new Radio(30);
+
+        radio.setCurrentStation(-6);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void flexibleCurrentStationAboveTheBorder() {
+        Radio radio = new Radio(30);
+
+        radio.setCurrentStation(31);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void flexibleNextStationMin() {
+        Radio radio = new Radio(30);
+        radio.setCurrentStation(0);
+
+        radio.next();
+
+        int expected = 1;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testCurrentStation() {
         Radio radio = new Radio();
         radio.setCurrentStation(6);
